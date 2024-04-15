@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root{
+            --primary-color: #0A1128;
+            --white-color: #ffffff;
+            --light-gray-color:#EEEEEE;
+            --gap: 3rem;
+            --secondary-color: crimson;
+        }
+        
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html{
+            font-size: 65,5%;
+            scroll-behavior: smooth;
+        }
+        
+        body{
+            font-family: "Open Sans", sans-serif; 
+            font-size: 2rem;   
+            color: var(--primary-color);
+            line-height: 1.5;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Montserrat", sans-serif;  
+        }
+        
+        h1{
+            font-size: 6rem;
+            text-transform: uppercase;
+        }
+        h2{
+            font-size: 6rem;
+            margin-bottom: 5rem;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+        h3{
+            font-size: 5rem;
+        }
+        h4{
+            font-size: 4.5rem;
+        }
+        h5{
+            font-size: 4rem;
+        }
+        h6{
+            font-size: 3.5rem;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        p{
+            margin-bottom: 3rem;
+        }
+        
+        .responsive-table {
+            overflow: hidden;
+            overflow-x: auto;
+        }
+        
+        table {
+            min-width: 360px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        table caption {
+            font-weight: bold;
+            font-style: italic;
+            font-size: 1.6rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            
+        }
+        
+        table td, table th {
+            padding: 0.5rem;
+            text-align: left;
+            border: 0.1rem solid var(--light-gray-color);
+        }
+        
+        tfoot td, table th {
+            background: var(--light-gray-color);
+        }
+        
+        .main-bg {
+            background-image: url('../img/main-bg.svg');
+            background-size: cover;
+            background-position: center center;
+            color: var(--white-color);
+        }
+        
+        .white-bg {
+            background: var(--white-color);
+            color: var(--primary-color);
+         }
+        .main-content {
+            max-width: 1200rem; 
+            margin: 0 auto;
+            padding: 8rem var(--gap);
+        }
+        
+        .section {
+            min-height: 100vh;
+        }
+        
+        .menu-spacing {
+            height: 100px;
+        }
+        
+        body .full-with {
+            width: 100%;
+            flex: 1 1 100%;
+        }
+        
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1;
+            border-bottom: 0.01rem solid var(--light-gray-color);
+        }
+        
+        .menu-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        
+        .menu h1{
+            font-size: 2.3rem;
+            color: var(--primary-color);
+        }
+        
+        .menu h1 a{
+            color: inherit;
+        }
+        
+        .menu ul {
+            list-style: none;
+            display: flex;
+        }
+        .menu ul li a {
+            display: block;
+            padding: 2rem;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        .menu ul li a::after {
+         content:'';
+         position: absolute;
+         bottom: 1rem;
+         left: 50%;
+         width: 0;
+         height: 0.2rem;
+         background: var(--secondary-color);
+         transition: all 300ms ease-in-out;
+        }
+        
+        .menu ul li a:hover::after {
+            width: 50%;
+            left: 25%;
+        }
+        
+        .intro-content {
+            position: relative;
+            /* top: 1rem; */
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: var(--gap);
+            min-height: 100vh;
+        }
+        
+        .intro-text-content, .intro-img{
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: center;
+        }
+        
+        .intro-img img, .intro-img svg{
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .top3-content {
+            max-width: 64rem;
+            display: flex;
+            /* flex-flow: column wrap; */
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        
+        .grid-one-content{
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        .grid-main-heading{
+            margin-bottom: 1rem;
+        }
+        
+        .grid-description{
+            padding-bottom: 3rem;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--gap);
+            counter-reset: grid-counter;
+        }
+        
+        .grid h3 {
+            font-size: 3rem;
+            position: relative;
+            padding-left: 6rem;
+            padding-bottom: 2rem;
+        }
+        
+        .grid h3::before {
+            counter-increment: grid-counter;
+            content: counter(grid-counter);
+            position: absolute;
+            font-size: 8rem;
+            font-style: italic;
+            top: -4rem;
+            left: -0.5rem;
+            transform: rotate(5deg);
+        }
+        
+        .gallery-img {
+            width: 100%; 
+            max-width: 36rem;
+            max-height: 36rem; 
+            overflow: hidden;
+        }
+        
+        .gallery-img img {
+            transition: all 300ms ease-in-out;
+        }
+        
+        .gallery-img img:hover {
+            transform: translate(-3%, 3%) scale(1.2) rotate(5deg);
+        }
+        
+        .contact-form{
+            grid-column: span 2;
+        }
+        
+        .contact-form .form-grid{
+            border: none;
+             display: flex; 
+             flex-direction: row;
+             flex-wrap: wrap; 
+        }
+        
+        .form-grid legend {
+            font-style: italic;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .form-group {
+            flex: 1 1 320px;
+            
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            border: none;
+            background: var(--white-color);
+            padding: 1.5rem 2rem;
+            width: 95%;
+            font-size: 1.5rem;
+        }
+        
+        .form-group button{
+            border: 0.5rem solid var(--white-color);
+            background: none;
+            color: var(--white-color);
+            padding: 1.5rem 4rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 300ms ease-in-out;
+        }
+        
+        .form-group button:hover{
+            background: var(--white-color);
+            color: var(--primary-color);
+        }
+        
+        .form-group ::placeholder {
+            color: var(--light-gray-color);
+        }
+        
+        .close-menu {
+            display: none;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--white-color);
+            width: 5rem;
+            height: 5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 800px) {
+            .intro-content, .grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-img {
+                width: 100%;
+                max-width: 100%;
+                max-height: 100%;
+            }
+            .gallery-img img {
+                width: 100%;
+            }
+        
+            .grid-one-content{
+                display: block;
+            }
+        
+            .menu{
+                bottom: 0;
+                text-align: column;
+            }
+        
+            .menu-content,.menu-content ul {
+                flex-direction: column;
+                justify-content: center;
+            }
+        
+            .menu-content{
+                height: 100vh;
+            }
+            .menu {
+                display: none;
+            }
+        
+            .close-menu {
+                position: fixed;
+                z-index: 2;
+                top: 0;
+                left: 0;
+            }
+        
+            .close-menu-label::after {
+                content: '☰' ;
+                position: fixed;
+                z-index: 2;
+                top: 2rem;
+                right: 2rem;
+                background: var(--primary-color);
+                color: var(--white-color);
+                font-size: 3rem;
+                line-height: 3rem;
+                width: 3rem;
+                height: 3rem;
+                text-align: center;
+                padding: 0.5rem;
+            }
+        
+            /* × */
+            .close-menu:checked~.menu {
+                display: block;
+            }
+            .close-menu:checked~.close-menu-label::after {
+                display: block;
+                content: '×' ;
+            }
+        
+            .menu-spacing {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="main-bg">
+    <input id="close-menu" class="close-menu" type="checkbox" aria-label="close menu" role="button">
+    <label class="close-menu-label" for="close-menu" title="colese-menu"></label>
+    <aside class="menu white-bg">
+        <div class="main-content menu-content">
+            <h1 onclick="getElementById('close-menu').checked = false;">
+                <a href="#home">LOGO</a>
+            </h1>
+
+            <nav>
+                <ul onclick="getElementById('close-menu').checked = false;">
+                    <li><a href="#intro">Intro</a></li>
+                    <li><a href="#grid-one">Grid-one</a></li>
+                    <li><a href="#gallery">gallery</a></li>
+                    <li><a href="#grid-two">Grid-two</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+
+    <div class="menu-spacing"></div>
+
+    <section id="home" class="intro main-bg section">
+        <div class="main-content intro-content">
+            <div class="intro-text-content">
+                <h2>30 COISAS QUE APRENDI DEPOIS DOS 30</h2>
+                <p>Não siga seus desejos instintivos. Ter desejos é um presente dado
+                    ao ser humano, mas assim como toda dádiva, quando mal usada
+                    passa a ser maldição. Os desejos nos enganam, então prefira pendurá-los por um tempo. Nada melhor
+                    que o tempo para provar se
+                    aquele desejo é genuíno e se vai terminar em algo bom; ou se é
+                    instintivo e irracional, que só pode dar merda.
+                    Vou dar um exemplo bem chulo: “Quero fazer tatuagem.” Tudo
+                    bem. Espere seis meses e veja se depois desse tempo algo sobre
+                    esse desejo mudou. Mudou o tipo de desenho? O tamanho e o
+                    lugar? A cor? Ou desistiu completamente? Tá vendo? Se tivesse
+                    feito no impulso, teria se arrependido.
+                    Moral da história: Sentiu desejo? Espere longos dias ou meses
+                    sem alimentá-los muito. Se não passarem, comece a pensar em
+                    realizá-los. Do contrário, são enganosos e vão ferrar com você.
+                    Não fuja deles, mas ignore-os</p>
+            </div>
+            <div class="intro-img">
+                <img src="/LANDING PAGE/img/undraw_static_assets_rpm6.svg" alt="logo de html, css e js">
+            </div>
+        </div>
+    </section>
+
+    <section id="intro" class="white-bg section">
+        <div class="main-content top3-content">
+            <h2>news jobs </h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id blanditiis veritatis, odio animi laborum quo
+                impedit sint dignissimos! Voluptatibus quia vel ea blanditiis nemo quam? Ad rerum sapiente dignissimos
+                sunt.
+            </p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque dicta aut velit veritatis soluta hic nisi
+                assumenda iusto similique possimus asperiores, ut explicabo rerum, atque cum ab corporis officia dolor.
+            </p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel maxime dolorem mollitia quae molestiae
+                asperiores hic sit enim omnis optio, itaque perferendis, neque illum recusandae reiciendis. Id similique
+                doloribus tempore.
+            </p>
+        </div>
+    </section>
+
+    <section id="grid-one" class="grid-one main-bg section">
+        <div class="main-content grid-one-content">
+            <h2 class="grid-main-heading">my grid</h2>
+            <p class="grid-description">Uma breve descrição</p>
+
+            <div class="grid">
+                <article>
+                    <h3>Teste 1</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas quos quidem repellendus aliquam,
+                        culpa
+                        neque inventore alias necessitatibus optio, animi quaerat ab reprehenderit beatae dolores autem.
+                        Ducimus
+                        autem excepturi ipsa.
+                    </p>
+                </article>
+                <article>
+                    <h3>Teste 2</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum explicabo quam suscipit totam
+                        maiores nisi
+                        veniam ex soluta laudantium. Est possimus minus ad doloremque eligendi sequi dolor quod quae
+                        ducimus.
+                    </p>
+                </article>
+                <article>
+                    <h3>Teste 3</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum explicabo quam suscipit totam
+                        maiores nisi
+                        veniam ex soluta laudantium. Est possimus minus ad doloremque eligendi sequi dolor quod quae
+                        ducimus.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="grid-one white-bg section">
+        <div class="main-content grid-one-content">
+            <h2 class="grid-main-heading">Gallery</h2>
+            <p class="grid-description">Uma breve descrição</p>
+
+            <div class="grid">
+                <div class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1506555191898-a76bacf004ca?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODJ8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D"
+                        alt="random img">
+                </div>
+
+                <div class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1550686041-366ad85a1355?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D"
+                        alt="random img">
+                </div>
+
+                <div class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1504470695779-75300268aa0e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D"
+                        alt="random img">
+                </div>
+
+                <div class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA0fHxyYW5kb218ZW58MHx8MHx8fDA%3D"
+                        alt="random img">
+                </div>
+
+                <div class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1610775886581-1140b123cbb5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODZ8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D"
+                        alt="random img">
+                </div>
+
+                <div class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1621964614855-04b453f05d5a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTZ8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D"
+                        alt="random img">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="grid-two" class="grid-one main-bg section">
+        <div class="main-content grid-one-content">
+            <h2 class="grid-main-heading">my grid</h2>
+            <p class="grid-description">Uma breve descrição</p>
+
+            <div class="grid">
+                <article>
+                    <h3>Teste 1</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas quos quidem repellendus aliquam,
+                        culpa
+                        neque inventore alias necessitatibus optio, animi quaerat ab reprehenderit beatae dolores autem.
+                        Ducimus
+                        autem excepturi ipsa.
+                    </p>
+                </article>
+                <article>
+                    <h3>Teste 2</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum explicabo quam suscipit totam
+                        maiores nisi
+                        veniam ex soluta laudantium. Est possimus minus ad doloremque eligendi sequi dolor quod quae
+                        ducimus.
+                    </p>
+                </article>
+                <article>
+                    <h3>Teste 3</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum explicabo quam suscipit totam
+                        maiores nisi
+                        veniam ex soluta laudantium. Est possimus minus ad doloremque eligendi sequi dolor quod quae
+                        ducimus.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="white-bg section">
+        <div class="main-content top3-content">
+
+            <h2>Pricing</h2>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id blanditiis veritatis, odio animi laborum quo
+                impedit sint dignissimos! Voluptatibus quia vel ea blanditiis nemo quam? Ad rerum sapiente dignissimos
+                sunt.
+            </p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque dicta aut velit veritatis soluta hic nisi
+                assumenda iusto similique possimus asperiores, ut explicabo rerum, atque cum ab corporis officia dolor.
+            </p>
+
+            <div class="respsive-table">
+                <table>
+                    <caption> Pricing Table </caption>
+                    <thead>
+                        <tr>
+                            <th>Title 1</th>
+                            <th>Title 2</th>
+                            <th>Title 3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>content </td>
+                            <td>content </td>
+                            <td>content </td>
+                        </tr>
+                        <tr>
+                            <td>content </td>
+                            <td>content </td>
+                            <td>content </td>
+                        </tr>
+                
+                        <tr>
+                            <td>content </td>
+                            <td>content </td>
+                            <td>content </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>testando</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="contact" class="intro main-bg section">
+        <div class="main-content intro-content">
+            <div class="intro-text-content">
+                <h2>30 COISAS QUE APRENDI DEPOIS DOS 30</h2>
+                <p>Não siga seus desejos instintivos. Ter desejos é um presente dado
+                    ao ser humano, mas assim como toda dádiva, quando mal usada
+                    passa a ser maldição. Os desejos nos enganam, então prefira pendurá-los por um tempo. Nada melhor
+                    que o tempo para provar se
+                    aquele desejo é genuíno e se vai terminar em algo bom; ou se é
+                    instintivo e irracional, que só pode dar merda.
+                    Vou dar um exemplo bem chulo: “Quero fazer tatuagem.” Tudo
+                    bem. Espere seis meses e veja se depois desse tempo algo sobre
+                    esse desejo mudou. Mudou o tipo de desenho? O tamanho e o
+                    lugar? A cor? Ou desistiu completamente? Tá vendo? Se tivesse
+                    feito no impulso, teria se arrependido.
+                    Moral da história: Sentiu desejo? Espere longos dias ou meses
+                    sem alimentá-los muito. Se não passarem, comece a pensar em
+                    realizá-los. Do contrário, são enganosos e vão ferrar com você.
+                    Não fuja deles, mas ignore-os</p>
+            </div>
+            <div class="intro-img">
+                <img src="/LANDING PAGE/img/undraw_static_assets_rpm6.svg" alt="logo de html, css e js">
+            </div>
+            <div class="contact-form">
+                <fieldset class="form-grid">
+                    <legend>Contact me</legend>
+
+                    <div class="form-group">
+                        <label for="first-name">First name</label>
+                        <input type="text" name="first-name" id="first-name" placeholder="your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">last name</label>
+                        <input type="text" name="last-name" id="last-name" placeholder="your last name">
+                    </div>
+                    <div class="form-group">
+                        <label for="e-mail">E-mail</label>
+                        <input type="email" name="email" id="email" placeholder="your e-mail">
+                    </div>
+                    <div class="form-group full-with">
+                        <label for="massage">massage</label>
+                        <textarea name="massage" id="massage" cols="30" rows="10" placeholder="your massage"></textarea>
+                    </div>
+                    <div class="form-group full-with">
+                        <button type="submit">Send massage</button>
+                    </div>
+
+                </fieldset>
+            </div>
+        </div>
+    </section>
+
+    <a class="back-to-top" href="#home">⇪</a>
+
+</body>
+
+</html>
